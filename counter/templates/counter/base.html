@@ -28,7 +28,7 @@
             min-height: 100vh;
             justify-content: center;
             align-items: center;
-            padding: 4rem 2rem;
+            padding: 0.5rem 2rem;
         }
         
         .page {
@@ -42,7 +42,7 @@
         
         .page-content {
             text-align: center;
-            padding: 4rem;
+            padding: 1.5rem;
             max-width: 100%;
         }
         
@@ -70,7 +70,7 @@
         }
         
         .header-section {
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
         
         nav {
@@ -78,7 +78,7 @@
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            margin: 2rem 0;
+            margin: 0.5rem 0;
             font-size: 1.4rem;
         }
         
@@ -93,7 +93,7 @@
         }
         
         .counter-section {
-            margin: 2rem 0;
+            margin: 0.5rem 0;
         }
         
         .miller-text {
@@ -139,7 +139,7 @@
         .message {
             font-size: 1.3rem;
             line-height: 1.8;
-            margin: 3rem 0;
+            margin: 1rem 0 0 0;
             letter-spacing: -0.003em;
         }
         
@@ -153,7 +153,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             line-height: 1.6;
             font-style: italic;
             animation: fadeIn 0.5s ease-in-out;
@@ -189,7 +189,7 @@
             color: #fff;
             text-decoration: none;
             border-bottom: 1px solid #fff;
-            font-size: 1.1rem;
+            font-size: 1.6rem;
             line-height: 1.6;
             display: block;
             margin-bottom: 1rem;
@@ -220,7 +220,10 @@
         }
         
         .page-title {
-            font-size: clamp(3rem, 20vw, 30rem);
+            font-size: var(--title-font-size, clamp(2rem, 12vw, 12rem));
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         @media (max-width: 640px) {
@@ -271,11 +274,11 @@
         </nav>
         <div class="page-content">
             <div class="header-section">
-                <div class="miller-text">2025<br>sammanlagt <b>{{ quote_count }}</b> sjukdagar</div>
+                <div class="miller-text">Sammanlagt <b>{{ quote_count }}</b> sjukdagar 2025</div>
             </div>
             
             <div>
-                <span class="oswald page-title">{% block page_title %}{% endblock %}</span>
+                <span class="oswald page-title" style="{% block title_style %}{% endblock %}">{% block page_title %}{% endblock %}</span>
                 <div class="link-spacer"></div>
             </div>
             

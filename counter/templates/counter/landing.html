@@ -2,6 +2,8 @@
 
 {% block title %}Klimatsjuk{% endblock %}
 
+{% block title_style %}--title-font-size: clamp(3rem, 20vw, 30rem);{% endblock %}
+
 {% block page_title %}klimatsjuk{% endblock %}
 
 {% block content_section %}
@@ -37,7 +39,7 @@
         quoteText.style.opacity = '0';
         
         setTimeout(() => {
-            quoteText.textContent = quote.text;
+            quoteText.textContent = '❝ ' + quote.text + ' ❞';
             quoteText.style.opacity = '1';
         }, 250);
     }

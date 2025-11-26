@@ -26,7 +26,13 @@ def planeten(request):
     approved_quotes = Quote.objects.filter(approved=True)
     quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
     return render(request, 'counter/planeten.html', {'quote_count': quote_count})
-    return render(request, 'counter/landing.html', {'quote_count': quote_count})
+
+
+def radd(request):
+    """Jag är sjukt rädd page."""
+    approved_quotes = Quote.objects.filter(approved=True)
+    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    return render(request, 'counter/radd.html', {'quote_count': quote_count})
 
 
 def submit_quote(request):

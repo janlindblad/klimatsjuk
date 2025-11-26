@@ -268,13 +268,13 @@
         <nav class="oswald">
             <a href="{% url 'counter:landing' %}">klimatsjuk</a> - 
             <a href="{% url 'counter:planeten' %}">den sjuka planeten</a> - 
-            <a href="#jag-ar-sjukt-radd">jag är sjukt rädd</a> - 
+            <a href="{% url 'counter:radd' %}">jag är sjukt rädd</a> - 
             <a href="#det-sjuka-systemet">det sjuka systemet</a> -
             <a href="#press">press</a> 
         </nav>
         <div class="page-content">
             <div class="header-section">
-                <div class="miller-text">Sammanlagt <b>{{ quote_count }}</b> sjukdagar 2025</div>
+                <div class="miller-text">Sammanlagt <b>{{ quote_count }}</b> klimatsjukdagar rapporterade</div>
             </div>
             
             <div>

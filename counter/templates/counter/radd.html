@@ -1,0 +1,88 @@
+{% extends "counter/base.html" %}
+
+{% block title %}Jag är sjukt rädd - Klimatsjuk{% endblock %}
+
+{% block page_title %}jag är sjukt rädd{% endblock %}
+
+{% block content_section %}
+<div class="text-section">
+    <h2>Vad kan jag göra?</h2>
+    
+    <h3><strong>Vad säger <a target="_blank" href="https://www.naturskyddsforeningen.se/">Naturskyddsföreningen?</a></strong></h3>
+    <p>1. Du är inte ensam
+    <br/>2. <a target="_blank" href="https://klimatkalendern.nu/">Hitta andra</a> som känner som du
+    <br/>3. <a target="_blank" href="https://klimatprata.se/hitta_din_organisation.php">Agera tillsammans</a>
+    <br/>4. Få tid till återhämtning
+    <br/>5. Ibland behövs egen terapi
+    
+    <h3><strong>Vad säger <a target="_blank" href="https://www.1177.se/liv--halsa/psykisk-halsa/att-leva-med-oro-for-klimatet/">1177?</a></strong></h3>
+    <p>Du kan hitta kraft i känslorna.</p>
+    <p>1. <a target="_blank" href="https://klimatkalendern.nu/">Hitta andra</a> som känner som du
+    <br/>2. <a target="_blank" href="https://poddtoppen.se/podcast/1767041503/tva-klimatpsykologer-moter">Utbilda dig</a>
+    <br/>3. Begränsa mängden nyheter
+    <br/>4. Återhämtning gör att du mår bättre
+    <br/>5. Hoppet är viktigt - Detta kan öka känslan av hopp:
+
+    <br/>Att du <b>förstår</b> information om klimatförändringarna.
+    <br/>Att du känner att <b>du skapar förändring</b>.
+    <br/>Att du känner en <b>tro på att samhället kan förändras</b>.
+    
+    <h3><strong>Vad finns det mer för stöd?</strong></h3>
+    <p>- Det finns en stor samling med material <a target="_blank" href="https://www.unthinkable.earth/resource-hub">här</a>
+    <br/>- Klimatpsykologerna har en gratis <a target="_blank" href="https://www.klimatpsykologerna.se/terrapi">metodbank för ungdomar</a>
+    <br/>- Kraft i <a target="_blank" href="https://oilwell.app/">humor</a>
+</div>
+
+<style>
+    .text-section {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        font-family: "Crimson Text", serif;
+        font-size: 1.6rem;
+        line-height: 1.8;
+        color: rgba(30, 30, 30, 0.85);
+    }
+    
+    .text-section h2 {
+        font-family: "Oswald", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 1.5rem 0 1rem 0;
+        text-transform: lowercase;
+        letter-spacing: -0.05em;
+    }
+    
+    .text-section h3 {
+        font-family: "Oswald", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 1.2rem 0 0.2rem 0;
+        letter-spacing: -0.05em;
+    }
+        
+    .text-section a {
+        color: rgba(30, 30, 30, 0.85);
+        text-decoration: underline;
+    }
+    
+    .text-section a:hover {
+        color: rgba(30, 30, 30, 1);
+    }
+    
+    @media (max-width: 640px) {
+        .text-section {
+            font-size: 1rem;
+            margin: 1rem auto;
+        }
+        
+        .text-section h2 {
+            font-size: 1.4rem;
+        }
+        
+        .text-section h3 {
+            font-size: 1rem;
+        }
+    }
+</style>
+{% endblock %}

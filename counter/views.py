@@ -35,6 +35,13 @@ def radd(request):
     return render(request, 'counter/radd.html', {'quote_count': quote_count})
 
 
+def systemet(request):
+    """Det sjuka systemet page."""
+    approved_quotes = Quote.objects.filter(approved=True)
+    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    return render(request, 'counter/systemet.html', {'quote_count': quote_count})
+
+
 def submit_quote(request):
     """Form page for submitting a new quote."""
     if request.method == 'POST':

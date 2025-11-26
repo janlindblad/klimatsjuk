@@ -1,0 +1,42 @@
+{% extends "counter/base.html" %}
+
+{% block title %}Det sjuka systemet - Klimatsjuk{% endblock %}
+
+{% block page_title %}det sjuka systemet{% endblock %}
+
+{% block content_section %}
+<div class="iframe-container">
+    <iframe src="https://klimatsjuk.nu/det-sjuka-systemet" title="Det sjuka systemet"></iframe>
+</div>
+
+<style>
+    .iframe-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        height: 800px;
+        border: none;
+    }
+    
+    .iframe-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgba(30, 30, 30, 0.2);
+        border-radius: 4px;
+    }
+    
+    @media (max-width: 1024px) {
+        .iframe-container {
+            height: 600px;
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .iframe-container {
+            height: 500px;
+            margin: 1rem auto;
+        }
+    }
+</style>
+{% endblock %}

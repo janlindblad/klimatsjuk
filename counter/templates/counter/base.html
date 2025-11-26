@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Klimatsjuk{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            --mobile-scale: 0.77;
+            --mobile-padding-offset: 0.78;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: "Crimson Text", Georgia, serif;
+            line-height: 1.2;
+            color: rgba(17, 17, 17, 0.75);
+            background-color: #fcd9c7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+        
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .page-content {
+            text-align: center;
+            padding: 4rem;
+            max-width: 100%;
+        }
+        
+        h1 {
+            font-family: "Gravity Variable", sans-serif;
+            font-size: 34rem;
+            line-height: 0.8;
+            color: rgba(30, 30, 30, 0.9);
+            letter-spacing: 0.008em;
+            font-weight: 900;
+            margin: 0;
+            text-transform: lowercase;
+        }
+        
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 25rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 10rem;
+            }
+        }
+        
+        .header-section {
+            margin-bottom: 3rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            font-size: 1.4rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: rgba(17, 17, 17, 0.75);
+            border-bottom: 1px solid rgba(17, 17, 17, 0.75);
+        }
+        
+        nav a:hover {
+            opacity: 0.7;
+        }
+        
+        .counter-section {
+            margin: 2rem 0;
+        }
+        
+        .miller-text {
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            color: rgba(17, 17, 17, 0.75);
+            letter-spacing: -0.003em;
+            font-weight: 400;
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        .counter-display {
+            font-size: 8rem;
+            font-weight: 600;
+            color: rgba(30, 30, 30, 0.9);
+            margin: 2rem 0;
+            line-height: 1;
+        }
+        
+        .button-6 {
+            font-family: "Crimson Text", Georgia, serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.003em;
+            font-weight: 400;
+            color: rgba(30, 30, 30, 0.9);
+            background: #f5f4f3;
+            display: inline-block;
+            border-radius: 999rem;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        
+        .button-6:hover {
+            opacity: 0.8;
+        }
+        
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 3rem 0;
+            letter-spacing: -0.003em;
+        }
+        
+        .quote-box {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-style: italic;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        #quote-text {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .links-section {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .links-section a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .links-section a:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .links-section a:hover {
+            opacity: 0.8;
+        }
+        
+        .link-spacer {
+            height: 0.5rem;
+        }
+        
+        .oswald {
+            font-family: "Oswald", sans-serif;
+            font-size: 2rem;
+            line-height: 1.0;
+            color: rgba(30, 30, 30, 0.9);
+            letter-spacing: -0.08em;
+            font-weight: 500;
+            text-transform: lowercase;
+            margin: 1rem 0;
+            word-spacing: -0.01em;
+        }
+        
+        .page-title {
+            font-size: clamp(3rem, 20vw, 30rem);
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            
+            .page-content {
+                padding: 2rem 1rem;
+            }
+            
+            .miller-text {
+                font-size: 1.6rem;
+            }
+            
+            .counter-display {
+                font-size: 4rem;
+            }
+            
+            .button-6 {
+                font-size: 1.5rem;
+                padding: 0.5rem 1.2rem;
+            }
+            
+            nav {
+                font-size: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .links-section {
+                padding: 1.5rem;
+            }
+            
+            .links-section a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <nav class="oswald">
+            <a href="{% url 'counter:landing' %}">klimatsjuk</a> - 
+            <a href="{% url 'counter:planeten' %}">den sjuka planeten</a> - 
+            <a href="#jag-ar-sjukt-radd">jag är sjukt rädd</a> - 
+            <a href="#det-sjuka-systemet">det sjuka systemet</a> -
+            <a href="#press">press</a> 
+        </nav>
+        <div class="page-content">
+            <div class="header-section">
+                <div class="miller-text">2025<br>sammanlagt <b>{{ quote_count }}</b> sjukdagar</div>
+            </div>
+            
+            <div>
+                <span class="oswald page-title">{% block page_title %}{% endblock %}</span>
+                <div class="link-spacer"></div>
+            </div>
+            
+            <div>
+                <a href="{% url 'counter:submit_quote' %}" class="button-6">Anmäl mig sjuk</a>
+            </div>
+            
+            <div class="message">
+                <p>VI BEHÖVER TA HAND OM OSS SJÄLVA OCH VARANDRA</p>
+                {% block content_section %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

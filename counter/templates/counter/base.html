@@ -282,12 +282,16 @@
                 <div class="link-spacer"></div>
             </div>
             
+            {% if show_submit_button %}
             <div>
                 <a href="{% url 'counter:submit_quote' %}" class="button-6">Anmäl mig sjuk</a>
             </div>
+            {% endif %}
             
             <div class="message">
+                {% if show_submit_button %}
                 <p>VI BEHÖVER TA HAND OM OSS SJÄLVA OCH VARANDRA</p>
+                {% endif %}
                 {% block content_section %}{% endblock %}
             </div>
         </div>

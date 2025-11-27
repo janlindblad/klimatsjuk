@@ -1,12 +1,12 @@
 {% extends "counter/base.html" %}
 
-{% block title %}Jag är sjukt rädd - Klimatsjuk{% endblock %}
+{% block title %}Press - Klimatsjuk{% endblock %}
 
-{% block page_title %}jag är sjukt rädd{% endblock %}
+{% block page_title %}press{% endblock %}
 
 {% block content_section %}
-<div class="iframe-container" style="{% block iframe_height %}--iframe-height: 1200px;{% endblock %}">
-    <iframe src="https://klimatsjuk.cargo.site/inneh%C3%A5ll-jag-%C3%A4r-sjukt-r%C3%A4dd" title="Jag är sjukt rädd" scrolling="no"></iframe>
+<div class="iframe-container">
+    <iframe src="https://klimatsjuk.cargo.site/inneh%C3%A5ll-press" title="Press" scrolling="no"></iframe>
 </div>
 
 <style>
@@ -15,7 +15,7 @@
         max-width: 1200px;
         margin: 2rem auto;
         padding: 0 1rem;
-        height: var(--iframe-height, 800px);
+        height: 800px;
         border: none;
     }
     
@@ -27,13 +27,13 @@
     
     @media (max-width: 1024px) {
         .iframe-container {
-            --iframe-height: 900px;
+            height: 600px;
         }
     }
     
     @media (max-width: 640px) {
         .iframe-container {
-            --iframe-height: 700px;
+            height: 500px;
             margin: 1rem auto;
         }
     }

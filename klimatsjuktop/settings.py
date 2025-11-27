@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from os import getenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6scavv^3-h16wum20eg3%-pv%i8)6k(#@v35dg3r=_d!+kg+=u'
+SECRET_KEY = getenv('KLIMATSJUK_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv('KLIMATSJUK_DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [getenv('KLIMATSJUK_ALLOWED_HOST', 'localhost'), '127.0.0.1']
 
 
 # Application definition
@@ -76,11 +77,11 @@ WSGI_APPLICATION = 'klimatsjuktop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'klimatsjuk',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': getenv('POSTGRESQL_ADDON_DB', 'klimatsjuk'),
+        'USER': getenv('POSTGRESQL_ADDON_USER', 'postgres'),
+        'PASSWORD': getenv('POSTGRESQL_ADDON_PASSWORD', 'postgres'),
+        'HOST': getenv('POSTGRESQL_ADDON_HOST', 'localhost'),
+        'PORT': getenv('POSTGRESQL_ADDON_PORT', '5432'),
     }
 }
 

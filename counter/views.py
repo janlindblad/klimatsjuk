@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.models import User
+from os import getenv
 from .models import Quote
 
 
@@ -81,3 +83,36 @@ def approved_quotes_api(request):
     """API endpoint to get all approved quotes."""
     quotes = Quote.objects.filter(approved=True).values('id', 'text')
     return JsonResponse(list(quotes), safe=False)
+
+
+@require_http_methods(["GET"])
+def setup(request):
+    """Setup view to create superuser account from environment variables."""
+    superuser = getenv('KLIMATSJUK_SUPERUSER')
+    superpass = getenv('KLIMATSJUK_SUPERPASS')
+    
+    if not superuser or not superpass:
+        return JsonResponse({
+            'status': 'error',
+            'message': 'KLIMATSJUK_SUPERUSER and KLIMATSJUK_SUPERPASS environment variables are required'
+        }, status=400)
+    
+    # Check if superuser already exists
+    if User.objects.filter(username=superuser).exists():
+        return JsonResponse({
+            'status': 'info',
+            'message': f'Superuser "{superuser}" already exists'
+        })
+    
+    # Create the superuser
+    try:
+        User.objects.create_superuser(superuser, f'{superuser}@klimatsjuk.local', superpass)
+        return JsonResponse({
+            'status': 'success',
+            'message': f'Superuser "{superuser}" created successfully'
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status': 'error',
+            'message': f'Error creating superuser: {str(e)}'
+        }, status=500)

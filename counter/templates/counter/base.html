@@ -108,11 +108,16 @@
         }
         
         .counter-display {
-            font-size: 8rem;
+            font-size: 2.5rem;
             font-weight: 600;
-            color: rgba(30, 30, 30, 0.9);
-            margin: 2rem 0;
+            color: #fff;
             line-height: 1;
+            font-family: "Courier New", monospace;
+            background-color: #222;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            border-radius: 4px;
+            letter-spacing: 0.1em;
         }
         
         .button-6 {
@@ -274,7 +279,7 @@
         </nav>
         <div class="page-content">
             <div class="header-section">
-                <div class="miller-text">Sammanlagt <b>{{ quote_count }}</b> klimatsjukdagar rapporterade</div>
+                <div class="miller-text">Sammanlagt <span class="counter-display">0{{ quote_count }}</span> klimatsjukdagar rapporterade</div>
             </div>
             
             <div>

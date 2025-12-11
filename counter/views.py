@@ -18,8 +18,8 @@ def get_client_ip(request):
 
 def landing(request):
     """Landing page view for the counter app."""
-    approved_quotes = Quote.objects.filter(approved=True)
-    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    all_quotes = Quote.objects.all()
+    quote_count = 40 + sum(all_quotes.values_list('days_count', flat=True)) or 0
     return render(request, 'counter/landing.html', {'quote_count': quote_count, 'show_submit_button': True})
 
 

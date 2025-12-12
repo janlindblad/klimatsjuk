@@ -16,38 +16,39 @@ def get_client_ip(request):
     return ip
 
 
+def get_quote_count():
+    """Get the total count of climate sick days (all quotes, approved or not)."""
+    all_quotes = Quote.objects.all()
+    return 40 + sum(all_quotes.values_list('days_count', flat=True)) or 0
+
+
 def landing(request):
     """Landing page view for the counter app."""
-    all_quotes = Quote.objects.all()
-    quote_count = 40 + sum(all_quotes.values_list('days_count', flat=True)) or 0
+    quote_count = get_quote_count()
     return render(request, 'counter/landing.html', {'quote_count': quote_count, 'show_submit_button': True})
 
 
 def planeten(request):
     """Den sjuka planeten page."""
-    approved_quotes = Quote.objects.filter(approved=True)
-    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    quote_count = get_quote_count()
     return render(request, 'counter/planeten.html', {'quote_count': quote_count, 'show_submit_button': True})
 
 
 def radd(request):
     """Jag är sjukt rädd page."""
-    approved_quotes = Quote.objects.filter(approved=True)
-    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    quote_count = get_quote_count()
     return render(request, 'counter/radd.html', {'quote_count': quote_count, 'show_submit_button': True})
 
 
 def systemet(request):
     """Det sjuka systemet page."""
-    approved_quotes = Quote.objects.filter(approved=True)
-    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    quote_count = get_quote_count()
     return render(request, 'counter/systemet.html', {'quote_count': quote_count, 'show_submit_button': True})
 
 
 def press(request):
     """Press page."""
-    approved_quotes = Quote.objects.filter(approved=True)
-    quote_count = 40 + sum(approved_quotes.values_list('days_count', flat=True)) or 0
+    quote_count = get_quote_count()
     return render(request, 'counter/press.html', {'quote_count': quote_count, 'show_submit_button': False})
 
 

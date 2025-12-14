@@ -8,8 +8,48 @@
 
 {% block content_section %}
 <div id="quote-box" class="quote-box">
+    <button id="refresh-quote-btn" class="refresh-quote-btn" title="Nästa citat">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 16 16 12 12 8"></polyline>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+    </button>
     <p id="quote-text"></p>
 </div>
+
+<style>
+    .refresh-quote-btn {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 40px;
+        height: 40px;
+        background-color: #000;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .refresh-quote-btn:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.1);
+    }
+
+    .refresh-quote-btn:active {
+        transform: scale(0.95);
+    }
+
+    #quote-box {
+        position: relative;
+    }
+</style>
 
 <script>
     let quotes = [];
@@ -43,6 +83,9 @@
             quoteText.style.opacity = '1';
         }, 250);
     }
+    
+    // Set up refresh button
+    document.getElementById('refresh-quote-btn').addEventListener('click', displayRandomQuote);
     
     // Fetch quotes on page load
     fetchQuotes();

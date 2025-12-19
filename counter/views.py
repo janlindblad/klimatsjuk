@@ -19,7 +19,7 @@ def get_client_ip(request):
 def get_quote_count():
     """Get the total count of climate sick days (all quotes, approved or not)."""
     all_quotes = Quote.objects.all()
-    return 40 + sum(all_quotes.values_list('days_count', flat=True)) or 0
+    return sum(all_quotes.values_list('days_count', flat=True)) or 0
 
 
 def landing(request):
